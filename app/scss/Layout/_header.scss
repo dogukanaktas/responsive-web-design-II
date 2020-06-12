@@ -1,0 +1,224 @@
+//** HEADER CONTAINER **//
+
+.container-header {
+    display: flex;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10em;
+        width: 100%;
+    }
+    
+}
+
+//*****//
+
+
+//** LOGO **//
+
+.header-logo {
+    width: 10%;
+
+    @include responsive(mini) {
+        display: none;
+    }
+
+    img {
+        width: 50%;
+
+        @include responsive(phone) {
+            width: 100%;
+        }
+
+        @include responsive(tab-port) {
+            width: 75%;
+        }
+    }
+}
+
+//*****//
+
+
+//** HEADER BODY **//
+
+.container-header-body {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 2750px;
+
+    
+    @include responsive (tab-port) {
+        flex-direction: column;
+    }
+
+    .header-nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 55%;
+
+        @include responsive(tab-port) {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .header-nav-primary {
+            display: flex;
+            align-items: center;
+            height: 10%;
+
+            @include responsive(tab-port) {
+                justify-content: center;
+                margin-left: 1.5rem;
+            }
+
+            .header-nav-primary-list {
+                display: flex;
+                justify-content: flex-start;
+
+                li {
+                    margin-right: 3em;
+
+                    a {
+                        @include hoverOrange;
+                        font-size: 1.3rem;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.article-darlene {
+    height: 70%;
+
+    @include responsive(tab-port) {
+        height: 90%;
+    }
+
+    @include responsive (tab-land) {
+        margin-bottom: 1rem;
+    }
+
+    .article-darlene-body {
+        width: 75%;
+
+        @include responsive(tab-port) {
+            text-align: center;
+            margin: 2rem 7rem;
+        }
+
+        @include responsive(phone) {
+           margin: 2rem 5rem;
+        
+        }
+
+        @include responsive(mini) {
+            margin: 2rem 2rem;
+        }
+
+        span {
+            color: color(-c-orange);
+        }
+
+        a {
+            @include buttonLight;
+            color: color(-c-dark);
+        }
+    }
+
+    h1 {
+        @include marginBottom1;
+        font-size: 3.25rem;
+        font-weight: 900;
+    }
+
+    p {
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1.8;
+        margin-bottom: 4em;
+    }
+}
+
+//*****//
+
+
+//** IMAGE **//
+
+.header-image {
+    margin: 0 auto;
+    width: 45%;
+    height: auto;
+    min-width: 480px;
+
+    @include responsive(tab-port) {
+        text-align: center;
+        width: 100%;
+    }
+    
+    @include responsive(mini) {
+        min-width: 320px;
+    }
+
+    @include responsive(mini) {
+        min-width: 160px;
+    }
+
+    img {
+        width: 100%;
+        min-width: 475px;
+        max-width: 900px;
+
+        @include responsive(tab-port) {
+            width: 45%;
+            margin: 0 auto;
+        }
+
+        @include responsive(phone) {
+            margin-right: 3em;
+            min-width: 320px;
+        }
+
+        @include responsive(mini) {
+            min-width: 160px;
+        }
+
+
+    }
+}
+
+//*****//
+
+
+//** SOCIAL **//
+
+.header-social {
+    width: 5%;
+    margin-top: auto;
+
+    @include responsive(phone) {
+        display: none;
+    }
+    
+
+    ul {
+        display: flex;
+        transform: rotate(-90deg);
+        margin-bottom: 16rem;
+
+        li {
+            margin: 1em;
+
+            a {
+                @include hoverBlack;
+            }
+        }
+    }
+}
+
+
+

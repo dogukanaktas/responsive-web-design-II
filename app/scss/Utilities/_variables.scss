@@ -1,0 +1,20 @@
+//** FONTS **//
+
+$font-h: 'Martel', serif;
+$font-p:  'Martel', serif;
+$font-a: 'Roboto', sans-serif;
+
+
+//** COLORS **//
+$black: #0000;
+$colors: (
+    -c-dark: rgb(0,0,0),
+    -c-light: rgb(247,247,247),
+    -c-orange: rgb(255,157,84),
+    -c-gray: rgb(152,152,152),
+    -c-textarea: rgb(251, 234, 199)
+);
+
+
+//** GRID **//
+$gridBox: 5;

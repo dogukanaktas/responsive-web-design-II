@@ -1,0 +1,81 @@
+a {
+    font-size: 1.125rem;
+    text-decoration: none;
+    font-family: $font-a;
+    font-weight: 450;
+    color: color(-c-gray);
+    transition: 0.3s all;
+
+    &:hover {
+        @include hoverBlack;
+    }
+}
+
+p,article {
+    line-height: 1.6;
+    font-size: 1.25rem;
+    color: color(-c-gray);
+}
+
+span {
+    color: color(-c-orange);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-h;
+    color: color(-c-dark);
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.25rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: color(-c-gray);
+    margin-bottom: 1em;
+}
+
+ul {
+    list-style-type: none;
+}
+
+input,
+select,
+textarea {
+    margin-bottom: 1em;
+    padding: 1em;
+    width: 90%;
+    border: 1px solid color(-c-gray);
+    border-radius: 10px;
+    font-family: $font-a;
+    font-size: 1.4rem;
+
+    &:focus {
+        border-radius: 10px;
+        background-color: color(-c-textarea);
+        outline: none;
+    }
+}
+
+label {
+    display: inline-block;
+    font-family: $font-a;
+    font-size: 1.125rem;
+    margin-bottom: .6em;
+}
+
+.bolder {
+    font-weight: 900;
+}
+
+

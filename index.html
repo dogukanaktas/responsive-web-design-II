@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="app/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="app/img/favicon.ico" type="image/x-icon">
+    <meta name="author" content="Dogukan Aktas">
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="dist/main.css">
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Martel:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <title>Darlene Cox</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-header">
+            <header id="about">
+                <div class="header-logo">
+                    <a href="#"><img src="app/img/logo.png" alt="logo"></a>
+                </div>
+
+                <div class="container-header-body">
+                    <div class="header-nav">
+                        <nav class="header-nav-primary">
+                            <ul class="header-nav-primary-list">
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#portfolio">Portfolio</a></li>
+                                <li><a href="#blog">Blog</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                        </nav>
+                        <article class="article-darlene">
+                            <div class="article-darlene-body">
+                                <h3>About <span>__</span></h3>
+                                <h1>Darlene Cox</h1>
+                                <p>Darlene is a designer based in New York. With over 8 years of experience in designing
+                                    for
+                                    web
+                                    and
+                                    user interface designs. She also enjoys working on graphic design an illustrations.
+                                </p>
+                                <a href="#">Work Enquiry</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="header-image">
+                        <img src="app/img/darlenecox.png" alt="Darlene Cox" class="image-darlene">
+                    </div>
+                </div>
+
+                <div class="header-social">
+                    <nav class="header-nav-secondary">
+                        <ul>
+                            <li><a href="#">twitter</a></li>
+                            <li><a href="#">behance</a></li>
+                            <li><a href="#">dribble</a></li>
+                            <li><a href="#">linkedin</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+        </div>
+
+        <section class="container-section">
+            <div class="section-featured" id="portfolio">
+                <h3>Portfolio <span>__</span></h3>
+                <div class="featured-header">
+                    <h1 class="bolder">Featured</h1>
+                    <nav>
+                        <ul class="featured-header-list">
+                            <li><a href="#">Featured</a></li>
+                            <li><a href="#">User Interface</a></li>
+                            <li><a href="#">Web Design</a></li>
+                            <li><a href="#">Branding</a></li>
+                            <li><a href="#">Graphic Design</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="image-container">
+                    <div class="featured-images">
+                        <div class="box1"><img src="app/img/grid1.png" alt=""></div>
+                        <div class="box2"><img src="app/img/grid2.png" alt=""></div>
+                        <div class="box3"><img src="app/img/grid3.png" alt=""></div>
+                        <div class="box4"><img src="app/img/grid4.png" alt=""></div>
+                        <div class="box5"><img src="app/img/grid5.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-blog" id="blog">
+                <h3>Blog <span>__</span></h3>
+                <h1 class="bolder">Recent Articles</h1>
+                <p class="time">12.02.2019</p>
+
+                <div class="blog-section">
+                    <div class="blog-section-left">
+                        <h1>7 Principles of Effective Icon Design</h1>
+                        <article>
+                            Before approaching icon design, there are some guidelines and principles that are worth
+                            studying. If
+                            you want to create effective icon designs, then you should take a holistic approach to
+                            issues
+                            such
+                            as audience, size, simplicity, lighting, perspective, and style.
+                        </article>
+                        <a href="">Read More</a>
+                    </div>
+                    <div class="blog-section-right">
+                        <img src="app/img/blog1.png" alt="">
+                    </div>
+                </div>
+
+                <div>
+                    <p class="time">14.01.2019</p>
+                </div>
+                <div class="blog-section">
+                    <div class="blog-section-left">
+                        <h1>A step-by-step guide to designing a real estate app</h1>
+                        <article>
+                            Research and usability testing found that the our App for Agents
+                            was not meeting the needs of Real Estate Agents around efficiency and speed. We were
+                            challenged
+                            to
+                            re-design the app to address
+                            these issues.
+                        </article>
+                        <a href="" class="selam">Read More</a>
+                    </div>
+                    <div class="blog-section-right order">
+                        <img src="app/img/blog2.png" alt="">
+                    </div>
+                </div>
+                <div class="view-articles">
+                    <a href="#">View all Articles</a>
+                </div>
+            </div>
+
+
+            <section class="section-contact" id="contact">
+                <h3>Contact <span>__</span></h3>
+                <h2 class="bolder">Work Enquiry</h2>
+                <h2>Wanna talk about your next big project?</h2>
+
+                <form action="POST" class="form">
+                    <div class="form-left">
+                        <label id="label" for="">Full Name <span>*</span></label><br>
+                        <input type="text" placeholder="Full Name"><br>
+                        <label for="">Email Address <span>*</span></label><br>
+                        <input type="email" placeholder="Enter Email Address"><br>
+                        <label for="">Project Type <span>*</span></label><br>
+                        <select id="project" name="project">
+                            <option value="Select all that apply">Select all that apply</option>
+                            <option value="HTML5">HTML5</option>
+                            <option value="CSS3">CSS3</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="PHP">PHP</option>
+                        </select><br>
+                    </div>
+                    <div class="form-right">
+                        <label for="">Quick Message</label><br>
+                        <textarea name="message" rows="10" cols="50" placeholder="Leave a message"></textarea><br>
+                        <input type="submit" class="input-submit" value="Send">
+                    </div>
+                </form>
+            </section>
+        </section>
+
+        <footer class="container-footer">
+            <div>
+                <p class="copyright">&#169 2020 Dogukan Aktas</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+<script></script>
+</html>

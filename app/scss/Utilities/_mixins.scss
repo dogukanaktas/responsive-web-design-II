@@ -1,0 +1,116 @@
+//*** HOVERS ***//
+
+@mixin hoverOrange {
+    &:hover {
+        color: color(-c-orange);
+        transform: translateY(-2px);
+    }
+}
+
+@mixin hoverBlack {
+    &:hover {
+        color: color(-c-dark);
+    }
+}
+
+//*****//
+
+
+
+//** MARGINS **//
+
+@mixin marginBottom1 {
+    margin-bottom: 1em;
+}
+
+@mixin marginBottom2 {
+    margin-bottom: 2em;
+}
+
+@mixin marginBottom3 {
+    margin-bottom: 3em;
+}
+
+@mixin marginBottom4 {
+    margin-bottom: 4em;
+}
+
+//*****//
+
+
+
+//** BUTTONS **//
+
+@mixin buttonLight {
+    padding: 18px 30px;
+    border: 1px solid color(-c-gray);
+    border-radius: 4rem;
+    transition: 0.3s all;
+    @include responsive(tab-land) {
+        padding: 12px 20px;
+    }
+
+    &:hover{
+        @include hoverOrange;
+        border: 1px solid color(-c-orange);
+    }
+    
+    
+    &:active {
+        transform: translateY(-1px);
+    }
+}
+
+@mixin buttonDark {
+    padding: 22px 20px;
+    border-radius: 4rem;
+    transition: 0.3s all;
+    color: #fff;
+    background-color: #000;
+    width: 40%;
+    margin-top: 2em;
+    cursor: pointer;
+
+    &:hover {
+        color: #fff;
+        background-color: #000;
+        border-radius: 4rem;
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        color: #fff;
+        background-color: #000;
+        border-radius: 4rem;
+        transform: translateY(-1px);
+    }
+
+    &:focus {
+        color: #fff;
+        background-color: #000;
+        border-radius: 4rem;
+        transform: translateY(-1px);
+    }
+}
+
+//*****//
+
+
+
+//** GRID CLASSES **//
+
+@mixin gridClasses {
+
+@for $i from 1 through $gridBox {
+    .box#{$i} {
+        grid-area: box + $i;
+        width: 100%;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+}
+
+//*****//
