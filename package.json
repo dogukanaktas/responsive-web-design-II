@@ -30,5 +30,10 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "acorn": "^5.7.4",
+    "kind-of": "^6.0.3",
+    "minimist": "^1.2.5"
   }
 }
