@@ -22,7 +22,7 @@
     }
 
     .featured-header {
-        display: flex;
+        @include flex;
         justify-content: space-between;
         margin-bottom: 1em;
 
@@ -31,7 +31,7 @@
         }
 
         .featured-header-list {
-            display: flex;
+            @include flex;
             margin-top: 2em;
 
             @include responsive(tab-port) {
@@ -106,7 +106,7 @@
     }
 
     .view-articles {
-        display: flex;
+        @include flex;
         justify-content: center;
 
         a {
@@ -118,7 +118,7 @@
 
 
 .blog-section {
-    display: flex;
+    @include flex;
     justify-content: space-between;
 
     @include marginBottom4;
@@ -194,7 +194,7 @@
 }
 
 .form {
-    display: flex;
+    @include flex;
     justify-content: space-between;
     width: 100%;
 
