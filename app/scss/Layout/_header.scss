@@ -1,10 +1,10 @@
 //** HEADER CONTAINER **//
 
 .container-header {
-    display: flex;
+    @include flex;
 
     header {
-        display: flex;
+        @include flex;
         justify-content: space-between;
         margin-bottom: 10em;
         width: 100%;
@@ -43,7 +43,7 @@
 //** HEADER BODY **//
 
 .container-header-body {
-    display: flex;
+    @include flex;
     justify-content: center;
     width: 100%;
     max-width: 2750px;
@@ -54,7 +54,7 @@
     }
 
     .header-nav {
-        display: flex;
+        @include flex;
         flex-direction: column;
         justify-content: space-between;
         width: 55%;
@@ -65,7 +65,7 @@
         }
 
         .header-nav-primary {
-            display: flex;
+            @include flex;
             align-items: center;
             height: 10%;
 
@@ -75,7 +75,7 @@
             }
 
             .header-nav-primary-list {
-                display: flex;
+                @include flex;
                 justify-content: flex-start;
 
                 li {
@@ -206,7 +206,7 @@
     
 
     ul {
-        display: flex;
+        @include flex;
         transform: rotate(-90deg);
         margin-bottom: 16rem;
 
