@@ -74,7 +74,7 @@ function css(cb) {
 
 // Process Nunjucks
 function nunjucks(cb) {
-    gulp.src("app/pages/*.html")
+    gulp.src("app/*.html")
         .pipe(
             nunjucksRender({
                 path: ["app/"] // String or Array
@@ -109,8 +109,8 @@ function watch_files() {
     });
     gulp.watch("app/scss/**/*.scss", css);
     gulp.watch("app/js/*.js", js).on("change", browserSync.reload);
-    gulp.watch("app/html/*.html", nunjucks).on("change", browserSync.reload);
-    gulp.watch("app/html/*.html", nunjucks).on(
+    gulp.watch("app/*.html", nunjucks).on("change", browserSync.reload);
+    gulp.watch("app/*.html", nunjucks).on(
         "change",
         browserSync.reload
     );
