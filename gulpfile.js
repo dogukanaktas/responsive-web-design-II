@@ -1,71 +1,123 @@
-// Initialize modules
-// Importing specific gulp API functions lets us write them below as series() instead of gulp.series()
-const { src, dest, watch, series, parallel } = require('gulp');
-// Importing all the Gulp-related packages we want to use
-const sourcemaps = require('gulp-sourcemaps');
-const sass = require('gulp-sass');
-const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
-const postcss = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-var replace = require('gulp-replace');
+const gulp = require("gulp");
+const { parallel, series } = require("gulp");
 
+const imagemin = require("gulp-imagemin");
+const htmlmin = require("gulp-htmlmin");
+const uglify = require("gulp-uglify");
+const sass = require("gulp-sass");
+const concat = require("gulp-concat");
+const browserSync = require("browser-sync").create(); //https://browsersync.io/docs/gulp#page-top
+const nunjucksRender = require("gulp-nunjucks-render");
+const autoprefixer = require('gulp-autoprefixer');
+const babel = require('gulp-babel');
 
-// File paths
-const files = { 
-    scssPath: 'app/scss/**/*.scss',
-    jsPath: 'app/js/**/*.js'
+// 
+// TOP LEVEL FUNCTIONS
+//     gulp.task = Define tasks
+//     gulp.src = Point to files to use
+//     gulp.dest = Points to the folder to output
+//     gulp.watch = Watch files and folders for changes
+// 
+
+// Optimise Images
+function imageMin(cb) {
+    gulp.src("app/img/*")
+        .pipe(imagemin())
+        .pipe(gulp.dest("dist/images"));
+    cb();
 }
 
-// Sass task: compiles the style.scss file into style.css
-function scssTask(){    
-    return src(files.scssPath)
-        .pipe(sourcemaps.init()) // initialize sourcemaps first
-        .pipe(sass()) // compile SCSS to CSS
-        .pipe(postcss([ autoprefixer(), cssnano() ])) // PostCSS plugins
-        .pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
-        .pipe(dest('dist')
-    ); // put final CSS in dist folder
+// Copy all HTML files to Dist
+function copyHTML(cb) {
+    gulp.src("app/*.html").pipe(gulp.dest("dist"));
+    cb();
 }
 
-// JS task: concatenates and uglifies JS files to script.js
-function jsTask(){
-    return src([
-        files.jsPath
-        //,'!' + 'includes/js/jquery.min.js', // to exclude any specific files
-        ])
-        .pipe(concat('all.js'))
+// Minify HTML
+function minifyHTML(cb) {
+    gulp.src("app/*.html")
+        .pipe(gulp.dest("dist"))
+        .pipe(
+            htmlmin({
+                collapseWhitespace: true
+            })
+        )
+        .pipe(gulp.dest("dist"));
+    cb();
+}
+
+// Scripts
+function js(cb) {
+    gulp.src("app/js/*js")
+        .pipe(babel({
+            presets: ['@babel/preset-env']
+        }))
+        .pipe(concat("main.js"))
         .pipe(uglify())
-        .pipe(dest('dist')
+        .pipe(gulp.dest("dist/js"));
+    cb();
+}
+
+// Compile Sass
+function css(cb) {
+    gulp.src("app/scss/*.scss")
+        .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
+        .pipe(autoprefixer({
+            browserlist: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest("dist/css"))
+        // Stream changes to all browsers
+        .pipe(browserSync.stream());
+    cb();
+}
+
+// Process Nunjucks
+function nunjucks(cb) {
+    gulp.src("app/pages/*.html")
+        .pipe(
+            nunjucksRender({
+                path: ["src/templates/"] // String or Array
+            })
+        )
+        .pipe(gulp.dest("dist"));
+    cb();
+}
+
+function nunjucksMinify(cb) {
+    gulp.src("src/pages/*.html")
+        .pipe(
+            nunjucksRender({
+                path: ["src/templates/"] // String or Array
+            })
+        )
+        .pipe(
+            htmlmin({
+                collapseWhitespace: true
+            })
+        )
+        .pipe(gulp.dest("dist"));
+    cb();
+}
+
+// Watch Files
+function watch_files() {
+    browserSync.init({
+        server: {
+            baseDir: "dist/"
+        }
+    });
+    gulp.watch("app/scss/**/*.scss", css);
+    gulp.watch("app/js/*.js", js).on("change", browserSync.reload);
+    gulp.watch("app/html/*.html", nunjucks).on("change", browserSync.reload);
+    gulp.watch("app/html/*.html", nunjucks).on(
+        "change",
+        browserSync.reload
     );
 }
 
-// Cachebust
-function cacheBustTask(){
-    var cbString = new Date().getTime();
-    return src(['index.html'])
-        .pipe(replace(/cb=\d+/g, 'cb=' + cbString))
-        .pipe(dest('.'));
-}
+// Default 'gulp' command with start local server and watch files for changes.
+exports.default = series(nunjucks, css, js, imageMin, watch_files);
 
-// Watch task: watch SCSS and JS files for changes
-// If any change, run scss and js tasks simultaneously
-function watchTask(){
-    watch([files.scssPath, files.jsPath],
-        {interval: 1000, usePolling: true}, //Makes docker work
-        series(
-            parallel(scssTask, jsTask),
-            cacheBustTask
-        )
-    );    
-}
-
-// Export the default Gulp task so it can be run
-// Runs the scss and js tasks simultaneously
-// then runs cacheBust, then watch task
-exports.default = series(
-    parallel(scssTask, jsTask), 
-    cacheBustTask,
-    watchTask
-);
+// 'gulp build' will build all assets but not run on a local server.
+exports.build = parallel(nunjucksMinify, css, js, imageMin);
