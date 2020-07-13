@@ -23,7 +23,7 @@ const babel = require('gulp-babel');
 function imageMin(cb) {
     gulp.src("app/img/*")
         .pipe(imagemin())
-        .pipe(gulp.dest("dist/images"));
+        .pipe(gulp.dest("dist/img"));
     cb();
 }
 
@@ -54,7 +54,7 @@ function js(cb) {
         }))
         .pipe(concat("main.js"))
         .pipe(uglify())
-        .pipe(gulp.dest("dist/js"));
+        .pipe(gulp.dest("dist/"));
     cb();
 }
 
@@ -66,7 +66,7 @@ function css(cb) {
             browserlist: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest("dist/css"))
+        .pipe(gulp.dest("dist/"))
         // Stream changes to all browsers
         .pipe(browserSync.stream());
     cb();
@@ -77,7 +77,7 @@ function nunjucks(cb) {
     gulp.src("app/pages/*.html")
         .pipe(
             nunjucksRender({
-                path: ["src/templates/"] // String or Array
+                path: ["app/"] // String or Array
             })
         )
         .pipe(gulp.dest("dist"));
@@ -85,10 +85,10 @@ function nunjucks(cb) {
 }
 
 function nunjucksMinify(cb) {
-    gulp.src("src/pages/*.html")
+    gulp.src("app/*.html")
         .pipe(
             nunjucksRender({
-                path: ["src/templates/"] // String or Array
+                path: ["app/"] // String or Array
             })
         )
         .pipe(
