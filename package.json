@@ -8,7 +8,9 @@
     },
     "author": "Kieran Brown",
     "license": "ISC",
-    "dependencies": {},
+    "dependencies": {
+        "bl": "^2.2.1"
+    },
     "devDependencies": {
         "@babel/core": "^7.10.4",
         "@babel/preset-env": "^7.10.4",
