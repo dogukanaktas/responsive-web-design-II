@@ -9,7 +9,8 @@
     "author": "Kieran Brown",
     "license": "ISC",
     "dependencies": {
-        "bl": "^2.2.1"
+        "bl": "^2.2.1",
+        "http-proxy": "^1.18.1"
     },
     "devDependencies": {
         "@babel/core": "^7.10.4",
