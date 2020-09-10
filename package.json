@@ -10,7 +10,8 @@
     "license": "ISC",
     "dependencies": {
         "bl": "^2.2.1",
-        "http-proxy": "^1.18.1"
+        "http-proxy": "^1.18.1",
+        "yargs-parser": "^13.1.2"
     },
     "devDependencies": {
         "@babel/core": "^7.10.4",
